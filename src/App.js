@@ -35,21 +35,22 @@ class App extends React.Component {
     };
 
     updateData = (data) => {
-        const cityName = data.name;
+        const cityName = data.data.city.name;
         const forecasts = data.data.list.slice(0, 10);
         this.setState({ cityName, forecasts });
-        //console.log(data);
+        console.log(2222, data);
     };
 
     updateCurrentData = (data) => {
         const current = data.data;
-        const cityName = data.name;
+        const cityName = data.data.name;
         this.setState({ cityName, current });
-        //console.log(current);
+        console.log(1111, cityName);
     };
 
     handleSearch = () => {
         getCurrentWeather(this.state.input).then(this.updateCurrentData);
+        getWeatherFor(this.state.input).then(this.updateData);
     };
 
     render() {

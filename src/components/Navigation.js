@@ -16,7 +16,7 @@ function Navigation(props) {
                     onKeyPress={handleKeyPress}
                     value={props.input}
                 />
-                <button className="search-btn">
+                <button className="search-btn" onClick={props.handleSearch}>
                     <i className="fa fa-search" />
                 </button>
                 <button className="temp-switch">

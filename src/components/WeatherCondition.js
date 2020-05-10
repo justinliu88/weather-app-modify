@@ -6,32 +6,39 @@ import wind from "../assets/icons/icon-wind.png";
 
 function WeatherCondition(props) {
     console.log(props.current);
-    return (
-        <section className="weather-condition">
-            <div className="weather-condition__location">{props.cityName}</div>
-            <div className="weather-condition__temp">
-                {props.current.main.temp} c
-            </div>
-            <div className="weather-condition__desc">
-                <div>
-                    <img src={umbrella} />
-                    <span className="citem">
-                        {props.current.main.humidity} %
-                    </span>
+    if (props.current.main !== undefined) {
+        return (
+            <section className="weather-condition">
+                <div className="weather-condition__location">
+                    {props.cityName}
                 </div>
-                <div>
-                    <img src={wind} />
-                    <span className="citem">
-                        {props.current.wind.speed} km/h
-                    </span>
+                <div className="weather-condition__temp">
+                    {props.current.main.temp} c
                 </div>
-                <div>
-                    <img src={compass} />
-                    <span className="citem">NE</span>
+                <div className="weather-condition__desc">
+                    <div>
+                        <img src={umbrella} />
+                        <span className="citem">
+                            {props.current.main.humidity} %
+                        </span>
+                    </div>
+                    <div>
+                        <img src={wind} />
+                        <span className="citem">
+                            {props.current.wind.speed} km/h
+                        </span>
+                    </div>
+                    <div>
+                        <img src={compass} />
+                        <span className="citem">NE</span>
+                    </div>
                 </div>
-            </div>
-        </section>
-    );
+            </section>
+        );
+    } else {
+        console.log("undefined");
+        return null;
+    }
 }
 
 export default WeatherCondition;
